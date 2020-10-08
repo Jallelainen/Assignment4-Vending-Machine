@@ -6,8 +6,18 @@ namespace Assignment4_Vending_Machine.VendingMachine
 {
     class Readables : Product
     {
-        public Readables(string name, string info, int price) : base(name, info, price)
+        string Info { get; set; }
+        string Usage { get; set; }
+
+        public Readables(string name, int price, string info, string use) : base(name, price)
         {
+            Info = info;
+            Usage = use;
+        }
+
+        public override void Use()
+        {
+            throw new NotImplementedException();
         }
     }
 }

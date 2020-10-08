@@ -11,12 +11,19 @@ namespace Assignment4_Vending_Machine.VendingMachine
         //string useMessage = "After peeling off the plastic wrapping you take a bite of this soft boiled piece of perfection. " +
         //    "Before you know it, the whole egg is gone and you realize that pleasure sure is fleeting";
         //int price = 10;
+        string Info { get; set; }
+        string Usage { get; set; }
 
-        public Edibles(string name, string info, int price) : base(name, info, price)
+
+        public Edibles(string name, int price, string info, string use) : base(name, price)
         {
-
+            Info = info;
+            Usage = use;
         }
 
-
+        public override void Use()
+        {
+            
+        }
     }
 }
