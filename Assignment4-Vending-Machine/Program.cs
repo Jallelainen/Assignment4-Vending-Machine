@@ -9,7 +9,7 @@ namespace Assignment4_Vending_Machine
         {
             VM vm = new VM();
 
-            vm.PickProduct();
+            
         }
     }
 }

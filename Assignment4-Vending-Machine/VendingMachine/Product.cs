@@ -21,10 +21,9 @@ namespace Assignment4_Vending_Machine.VendingMachine
             Price = price;
         }
 
-        public bool Purchase(Product product)
+        public bool Purchase(Product product, VM vm)
         {
             bool canAfford;
-            VM vm = new VM();
             int moneyPool = vm.GetCredit();
 
             if (moneyPool >= product.Price)

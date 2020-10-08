@@ -7,7 +7,6 @@ namespace Assignment4_Vending_Machine.VendingMachine
 {
     public class VM : IVM
     {
-        VM vendingMachine = new VM();
         int[] moneyDenominator = new int[] { 1000, 500, 100, 50, 20, 10, 5, 1 };
         Product[] pickedProducts = new Product[0];
         Product[] productArr = new Product[8];
@@ -36,7 +35,7 @@ namespace Assignment4_Vending_Machine.VendingMachine
         {
             moneyPool = moneyPool - userProd.Price;
 
-            GetCredit();
+            //GetCredit();
         }
 
         public int GetCredit()
@@ -48,15 +47,15 @@ namespace Assignment4_Vending_Machine.VendingMachine
         {
             moneyPool = moneyPool + moneyDenominator[userChoice];
 
-            GetCredit();
+            //GetCredit();
         }
 
-        public void PickProduct()
+        public void PickProduct(int userChoice, VM vm)
         {
             bool canAfford;
-            int i = int.Parse(Console.ReadLine());
+            //int i = int.Parse(Console.ReadLine());
 
-            switch (i)
+            switch (userChoice)
             {
                 case 1:
                     userPick = productArr[0];
@@ -87,23 +86,24 @@ namespace Assignment4_Vending_Machine.VendingMachine
                     break;
             }
 
-            canAfford = userPick.Purchase(userPick); 
+            canAfford = userPick.Purchase(userPick, vm);
 
             if (canAfford == true)
             {
                 Array.Resize(ref pickedProducts, pickedProducts.Length + 1);
                 pickedProducts[pickedProducts.Length - 1] = userPick;
+                CalculateChange(userPick);
             }
             else
             {
                 throw new Exception("You do not have enough credits to buy this product.");
             }
-            
+
         }
 
-        Product[] IVM.FinishPurchase()
+        public Product[] FinishPurchase()
         {
-            throw new NotImplementedException();
+            return pickedProducts;
         }
     }
 }
