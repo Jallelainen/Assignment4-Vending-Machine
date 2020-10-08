@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assignment4_Vending_Machine.VendingMachine;
+using System;
 
 namespace Assignment4_Vending_Machine
 {
@@ -6,7 +7,9 @@ namespace Assignment4_Vending_Machine
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            VM vm = new VM();
+
+            vm.PickProduct();
         }
     }
 }

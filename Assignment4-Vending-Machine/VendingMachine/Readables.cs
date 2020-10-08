@@ -15,9 +15,14 @@ namespace Assignment4_Vending_Machine.VendingMachine
             Usage = use;
         }
 
-        public override void Use()
+        public override string Use()
         {
-            throw new NotImplementedException();
+            return $"After recieving the {Name} from the vending machine you {Usage}";
+        }
+
+        public override string Examine()
+        {
+            return $"While you examine your {Name} you decide to take a moment to read the description. It reads: {Info}";
         }
     }
 }

@@ -1,20 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Assignment4_Vending_Machine.VendingMachine;
 
 namespace Assignment4_Vending_Machine.VendingMachine
 {
     public class VM : IVM
     {
+        VM vendingMachine = new VM();
         int[] moneyDenominator = new int[] { 1000, 500, 100, 50, 20, 10, 5, 1 };
+        Product[] pickedProducts = new Product[0];
+        Product[] productArr = new Product[8];
         int moneyPool = 0;
         Product userPick;
 
+        int MoneyPool { get { return moneyPool; } set { } }
+
         public VM()
         {
-            int MoneyPool = moneyPool;
-            Product[] pickedProducts = new Product[0];
-            Product[] productArr = new Product[8];
+            MoneyPool = moneyPool;
 
             productArr[0] = new Edibles("Shinji Ramen Noodles", 15, "Spicy flavored ramen noodles made in Japan.", "cook the noodles in boiling water then eat them.");
             productArr[1] = new Edibles("Power Bar", 35, "Nutritional snack with granola, müsli and chocolate. Perfect for when you need that extra boost", "unwrap the power bar then eat it.");
@@ -28,9 +32,11 @@ namespace Assignment4_Vending_Machine.VendingMachine
         }
 
 
-        public int CalculateChange()
+        public void CalculateChange(Product userProd)
         {
-            throw new NotImplementedException();
+            moneyPool = moneyPool - userProd.Price;
+
+            GetCredit();
         }
 
         public int GetCredit()
@@ -45,9 +51,54 @@ namespace Assignment4_Vending_Machine.VendingMachine
             GetCredit();
         }
 
-        public Product PickProduct()
+        public void PickProduct()
         {
-            throw new NotImplementedException();
+            bool canAfford;
+            int i = int.Parse(Console.ReadLine());
+
+            switch (i)
+            {
+                case 1:
+                    userPick = productArr[0];
+                    break;
+                case 2:
+                    userPick = productArr[1];
+                    break;
+                case 3:
+                    userPick = productArr[2];
+                    break;
+                case 4:
+                    userPick = productArr[3];
+                    break;
+                case 5:
+                    userPick = productArr[4];
+                    break;
+                case 6:
+                    userPick = productArr[5];
+                    break;
+                case 7:
+                    userPick = productArr[6];
+                    break;
+                case 8:
+                    userPick = productArr[7];
+                    break;
+
+                default:
+                    break;
+            }
+
+            canAfford = userPick.Purchase(userPick); 
+
+            if (canAfford == true)
+            {
+                Array.Resize(ref pickedProducts, pickedProducts.Length + 1);
+                pickedProducts[pickedProducts.Length - 1] = userPick;
+            }
+            else
+            {
+                throw new Exception("You do not have enough credits to buy this product.");
+            }
+            
         }
 
         Product[] IVM.FinishPurchase()

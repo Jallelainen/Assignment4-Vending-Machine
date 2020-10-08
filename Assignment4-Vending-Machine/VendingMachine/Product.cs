@@ -9,9 +9,9 @@ namespace Assignment4_Vending_Machine.VendingMachine
     {
         int id = 0;
 
-        string Name { get; set; } 
-        int Price { get; set; }
-        int Id { get { return id; } set { } }
+        public string Name { get; set; } 
+        public int Price { get; set; }
+        public int Id { get { return id; } set { } }
 
 
         public Product(string name, int price)
@@ -21,27 +21,27 @@ namespace Assignment4_Vending_Machine.VendingMachine
             Price = price;
         }
 
-        public Product[] Purchase(Product product)
+        public bool Purchase(Product product)
         {
-            Product[] boughtProducts = new Product[0];
+            bool canAfford;
             VM vm = new VM();
             int moneyPool = vm.GetCredit();
 
             if (moneyPool >= product.Price)
             {
-                Array.Resize(ref boughtProducts, boughtProducts.Length + 1);
-                boughtProducts[boughtProducts.Length - 1] = product;
-
+                canAfford = true;
             }
             else
             {
-                throw new Exception("You do not have enough credits to buy this product.");
+                canAfford = false;
             }
 
-            return boughtProducts;
+            return canAfford;
         }
 
-        public abstract void Use();
+        public abstract string Use();
+
+        public abstract string Examine();
 
     }
 }
