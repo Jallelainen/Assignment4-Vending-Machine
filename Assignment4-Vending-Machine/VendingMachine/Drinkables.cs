@@ -9,12 +9,14 @@ namespace Assignment4_Vending_Machine.VendingMachine
         string Info { get; set; }
         string Usage { get; set; }
 
+        //derived class constructor with added variables
         public Drinkables(string name, int price, string info, string use) : base(name, price)
         {
             Info = info;
             Usage = use;
         }
 
+        //overridden methods from base class. specialized to fit this class.
         public override string Use()
         {
             return $"After recieving the {Name} from the vending machine you {Usage}";

@@ -41,7 +41,7 @@ namespace Assignment4_Vending_Machine.TEST
 
             //ASSERT
             Assert.Equal(expected, actual);
-            Assert.Equal(expected2, actual2);
+            Assert.Equal(expected2, actual2);//this line takes 6ms to execute, why?
 
         }
 
@@ -50,7 +50,7 @@ namespace Assignment4_Vending_Machine.TEST
         {
             //ARRANGE
             VM vm = new VM();
-            Edibles userProd = new Edibles("Shinji Ramen Noodles", 15, "Spicy flavored ramen noodles made in Japan.", "cook the noodles in boiling water then eat them.");
+            Edibles userProd = new Edibles("Shinji Ramen Noodles", 15, "Spicy flavored ramen noodles made in Japan.", "cook the noodles in boiling water then eat them.", "noodles");
             int insert = 2;
             int expected = 85;
             int expected2 = 70;

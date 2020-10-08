@@ -7,7 +7,7 @@ namespace Assignment4_Vending_Machine
     {
         static void Main(string[] args)
         {
-            VM vm = new VM();
+            //VM vm = new VM();
 
             
         }

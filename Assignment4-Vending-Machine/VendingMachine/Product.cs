@@ -13,7 +13,7 @@ namespace Assignment4_Vending_Machine.VendingMachine
         public int Price { get; set; }
         public int Id { get { return id; } set { } }
 
-
+        //constructor
         public Product(string name, int price)
         {
             Id = Id++;
@@ -21,6 +21,7 @@ namespace Assignment4_Vending_Machine.VendingMachine
             Price = price;
         }
 
+        //returns bool dependent on if the money pool contains sufficient funds.
         public bool Purchase(Product product, VM vm)
         {
             bool canAfford;
@@ -38,6 +39,7 @@ namespace Assignment4_Vending_Machine.VendingMachine
             return canAfford;
         }
 
+        //abstract methods used in derived classes
         public abstract string Use();
 
         public abstract string Examine();
