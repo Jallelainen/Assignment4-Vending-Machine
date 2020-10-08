@@ -22,7 +22,7 @@ namespace Assignment4_Vending_Machine.VendingMachine
 
         public override string Examine()
         {
-            throw new NotImplementedException();
+            return $"While you examine your {Name} you decide to take a moment to read the description. It reads: {Info}";
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Assignment4_Vending_Machine.VendingMachine
     {
         int id = 0;
 
-        public string Name { get; set; } 
+        public string Name { get; set; }
         public int Price { get; set; }
         public int Id { get { return id; } set { } }
 

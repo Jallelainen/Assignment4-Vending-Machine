@@ -30,7 +30,6 @@ namespace Assignment4_Vending_Machine.VendingMachine
 
         }
 
-
         public void CalculateChange(Product userProd)
         {
             moneyPool = moneyPool - userProd.Price;

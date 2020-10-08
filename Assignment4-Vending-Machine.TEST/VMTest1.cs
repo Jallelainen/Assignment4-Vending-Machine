@@ -33,7 +33,6 @@ namespace Assignment4_Vending_Machine.TEST
             int expected = 500;
             int expected2 = 550;
 
-
             //ACT
             vm.InsertMoney(insert);
             int actual = vm.GetCredit();
