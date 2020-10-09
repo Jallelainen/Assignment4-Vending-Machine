@@ -23,7 +23,7 @@ namespace Assignment4_Vending_Machine.VendingMachine
 
             productArr[0] = new Edibles("Shinji Ramen", 15, "Spicy flavored ramen noodles made in Japan.", "cook the noodles in boiling water then eat them.", "noodles");
             productArr[1] = new Edibles("Peppridge Power Boost", 35, "Nutritional snack with granola, müsli and chocolate. Perfect for when you need that extra boost", "unwrap the power bar then eat it.", "energy bar");
-            productArr[2] = new Edibles("Granny Bacons: Chocolate flavor", 39, "Chocolate flavored crisps that combines the sensations of salt and sweet. Granny Bacons original recepie, try them today!", "open the bag and eat the crisps with your hand.", "potato crisps");
+            productArr[2] = new Edibles("Granny Crisps: Chocolate flavor", 39, "Chocolate flavored crisps that combines the sensations of salt and sweet. Granny Bacons original recepie, try them today!", "open the bag and eat the crisps with your hand.", "potato crisps");
             productArr[3] = new Drinkables("Super Sugar Ray", 22, "Fizzy drink with an awesome sugar flavor. New recepie with added sugar! From the good folks at Nestlé.", "unscrew the cork and drink straight from the bottle.");
             productArr[4] = new Drinkables("Spring Water Naturals", 31, "Exclusive water flavored water with minerals from the springs of the Hudson river, NYC.", "open the cap with a capopener and pour into a glas, then drink from said glas.");
             productArr[5] = new Drinkables("Nuka-Cola", 19, "Classic Nuka-Cola in a glass bottle. The perfect blend of ingridients that brings in the sweet in life.", "unscrew the cork and chug the whole bottle faster than you can say hiccups.");
@@ -37,7 +37,6 @@ namespace Assignment4_Vending_Machine.VendingMachine
         {
             moneyPool = moneyPool - userProd.Price;
 
-            //GetCredit();
         }
 
         //returns available credits in money pool
@@ -51,15 +50,13 @@ namespace Assignment4_Vending_Machine.VendingMachine
         {
             moneyPool = moneyPool + moneyDenominator[userChoice];
 
-            //GetCredit();
         }
 
-        //takes in a value to pick a product, then checks if there is enouch money in the pool to purchase that product. 
-        //if it can, the product is added to an array of bought products, otherwise an exeption is thrown
+        //takes in a value to pick a product, then checks if there is enough money in the pool to purchase that product. 
+        //if it can, the product is added to an array of bought products, otherwise not
         public void PickProduct(int userChoice, VM vm)
         {
             bool canAfford;
-            //int i = int.Parse(Console.ReadLine());
 
             switch (userChoice)
             {
@@ -99,18 +96,35 @@ namespace Assignment4_Vending_Machine.VendingMachine
                 Array.Resize(ref boughtProducts, boughtProducts.Length + 1);
                 boughtProducts[boughtProducts.Length - 1] = userPick;
                 CalculateChange(userPick);
+
+                Console.WriteLine($"{userPick.Name} has been added to your products. Press any key to continue.");
+                Console.ReadKey(false);
             }
             else
             {
-                throw new Exception("You do not have enough credits to buy this product.");
+                Console.Clear();
+                Console.WriteLine("ERROR: You do not have enough credits to buy this product.");
+                Console.ReadKey(false); 
+                throw new Exception();
+                
             }
 
         }
 
         //returns the array of bought products
-        public Product[] FinishPurchase()
+        public Product[] GetBoughtProducts()
         {
             return boughtProducts;
+        }
+
+        public Product[] GetProducts()
+        {
+            return productArr;
+        }
+
+        public int[] GetDenominators()
+        {
+            return moneyDenominator;
         }
     }
 }

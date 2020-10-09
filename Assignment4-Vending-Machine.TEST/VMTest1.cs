@@ -88,7 +88,7 @@ namespace Assignment4_Vending_Machine.TEST
             int actual = vm.GetCredit();
             vm.PickProduct(userChoice2, vm);
             int actual2 = vm.GetCredit();
-            Product[] pickedProducts = vm.FinishPurchase();
+            Product[] pickedProducts = vm.GetBoughtProducts();
             int arrayLength = pickedProducts.Length;
 
             //ASSERT

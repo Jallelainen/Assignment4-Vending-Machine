@@ -7,7 +7,9 @@ namespace Assignment4_Vending_Machine
     {
         static void Main(string[] args)
         {
-            //VM vm = new VM();
+            VMinterface vmi = new VMinterface();
+
+            vmi.RunVM();
 
             
         }
