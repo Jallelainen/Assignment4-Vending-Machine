@@ -172,7 +172,10 @@ namespace Assignment4_Vending_Machine
 
             while (keepAlive == true)
             {
+                Product[] boughtProducts = vendingMachine.GetBoughtProducts();
                 int i = 1;
+                int bought = boughtProducts.Length;
+
                 Console.Clear();
                 Console.WriteLine("----| VENDING MACHINE |----");
                 Console.WriteLine($"Available credits: {vendingMachine.GetCredit()} Kr\n");
@@ -191,27 +194,35 @@ namespace Assignment4_Vending_Machine
                 {
                     case 1:
                         vendingMachine.PickProduct(choice, vendingMachine);
+                        CheckPurchase(choice, bought);
                         break;
                     case 2:
                         vendingMachine.PickProduct(choice, vendingMachine);
+                        CheckPurchase(choice, bought);
                         break;
                     case 3:
                         vendingMachine.PickProduct(choice, vendingMachine);
+                        CheckPurchase(choice, bought);
                         break;
                     case 4:
                         vendingMachine.PickProduct(choice, vendingMachine);
+                        CheckPurchase(choice, bought);
                         break;
                     case 5:
                         vendingMachine.PickProduct(choice, vendingMachine);
+                        CheckPurchase(choice, bought);
                         break;
                     case 6:
                         vendingMachine.PickProduct(choice, vendingMachine);
+                        CheckPurchase(choice, bought);
                         break;
                     case 7:
                         vendingMachine.PickProduct(choice, vendingMachine);
+                        CheckPurchase(choice, bought);
                         break;
                     case 8:
                         vendingMachine.PickProduct(choice, vendingMachine);
+                        CheckPurchase(choice, bought);
                         break;
                     case 9:
                         keepAlive = false;
@@ -225,6 +236,25 @@ namespace Assignment4_Vending_Machine
             }
 
             MainMenu();
+        }
+
+        private void CheckPurchase(int choice, int bought)
+        {
+            Product[] boughtProducts = vendingMachine.GetBoughtProducts();
+            Product[] products = vendingMachine.GetProducts();
+            int boughtShould = boughtProducts.Length;
+
+            if (boughtShould == bought + 1)
+            {
+                Console.WriteLine($"\n{products[choice - 1].Name} has been added to your products. Press any key to continue.");
+                Console.ReadKey(false);
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("ERROR: You do not have enough credits to buy this product.");
+                Console.ReadKey(false); 
+            }
         }
 
         private void FinishBuy()

@@ -96,17 +96,6 @@ namespace Assignment4_Vending_Machine.VendingMachine
                 Array.Resize(ref boughtProducts, boughtProducts.Length + 1);
                 boughtProducts[boughtProducts.Length - 1] = userPick;
                 CalculateChange(userPick);
-
-                Console.WriteLine($"{userPick.Name} has been added to your products. Press any key to continue.");
-                Console.ReadKey(false);
-            }
-            else
-            {
-                Console.Clear();
-                Console.WriteLine("ERROR: You do not have enough credits to buy this product.");
-                Console.ReadKey(false); 
-                throw new Exception();
-                
             }
 
         }

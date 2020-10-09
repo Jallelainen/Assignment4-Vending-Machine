@@ -103,14 +103,16 @@ namespace Assignment4_Vending_Machine.TEST
         {
             //ARRANGE
             VM vm = new VM();
-            int userChoice = 7;
             int insert = 3;
+            int expected = 0;
 
             //ACT
-            vm.InsertMoney(insert);
+            vm.PickProduct(insert, vm);
+            Product[] pickedProducts = vm.GetBoughtProducts();
+            int actual = pickedProducts.Length;
 
             //ASSERT
-            Assert.Throws<Exception>(() => vm.PickProduct(userChoice, vm));
+            Assert.Equal(expected, actual);
 
         }
     }
